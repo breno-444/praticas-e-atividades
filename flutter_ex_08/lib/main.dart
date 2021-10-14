@@ -1,31 +1,41 @@
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(home: Home()));
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  HomeState createState() {
+    return HomeState();
+  }
+}
+
+class HomeState extends State<Home> {
+  int numeroVezes = 0;
+  String mensagem =
+      "Número de vezes em que o botão foi pressionado: 0 .\nEssenúmero é par";
+  void cliqueDoBotao() {
+    numeroVezes = numeroVezes + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.home),
-        title: Text('Página Inicial'),
+        title: Text("Impar ou Par ?"),
       ),
       body: Center(
-        child: Text(
-          'Olá, Mundo!!!',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(mensagem =
+                "Número de vezes em que o botão foi pressionado: $numeroVezes.\nEsse número é ${numeroVezes % 2 == 0 ? "par" : "ímpar"}"),
+          ],
         ),
       ),
-      backgroundColor: Colors.blue[900],
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Exemplo de botão',
+        onPressed: () {
+          setState(cliqueDoBotao);
+        },
         child: Icon(Icons.add),
       ),
     );

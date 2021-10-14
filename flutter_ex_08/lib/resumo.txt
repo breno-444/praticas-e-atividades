@@ -1,0 +1,6 @@
+Flutter é um framework com uma linguagem de programação nativa(dart), que se pode reaproveitar conhecimento de outras linguagens como HTML, CSS, JAVA SCRIPT, etc...
+Como outras linguagens dart usa o metodo main para ser o inicio do codigo.
+No flutter existe tipos de widget e tambem tem o uso de class, como por exemplo o StatelessWidget que não tem um estado mutavel e o StatefilWidegt que por outra vez é mutavel, 
+Para desenhar uma hompage, existem alguns Widgets que normalmente são usados, sendo eles o Container, Row, Column e Stack.
+
+‍ 
