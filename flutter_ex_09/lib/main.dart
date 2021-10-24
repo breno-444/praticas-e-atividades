@@ -22,7 +22,8 @@ class HomeState extends State<Home> {
     this.resp = '$num01 + $num02 = $soma';
     return this.resp;
   }
-   subtrair() {
+
+  subtrair() {
     int num01 = int.parse(this.num01Controller.text);
     int num02 = int.parse(this.num02Controller.text);
     int subtrair = num01 - num02;
@@ -37,6 +38,7 @@ class HomeState extends State<Home> {
     this.resp = '$num01 / $num02 = ' + subtrair.toStringAsFixed(2);
     return this.resp;
   }
+
   mutiplicar() {
     int num01 = int.parse(this.num01Controller.text);
     int num02 = int.parse(this.num02Controller.text);
@@ -96,8 +98,6 @@ class HomeState extends State<Home> {
                   ),
                 ),
               ),
-              
-            
               ElevatedButton(
                 onPressed: () {
                   print(subtrair());
@@ -110,8 +110,7 @@ class HomeState extends State<Home> {
                   ),
                 ),
               ),
-              
-                ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   print(dividir());
                   setState(dividir);
@@ -123,8 +122,7 @@ class HomeState extends State<Home> {
                   ),
                 ),
               ),
-              
-                ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   print(mutiplicar());
                   setState(mutiplicar);
@@ -136,17 +134,16 @@ class HomeState extends State<Home> {
                   ),
                 ),
               ),
-              
             ],
           ),
           Text(
-                this.resp,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            this.resp,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.green,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
