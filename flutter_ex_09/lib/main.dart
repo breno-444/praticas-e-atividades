@@ -19,7 +19,7 @@ class HomeState extends State<Home> {
     int num01 = int.parse(this.num01Controller.text);
     int num02 = int.parse(this.num02Controller.text);
     int soma = num01 + num02;
-    this.resp = '$num01 + $num02 = $soma';
+    this.resp = '$num01 + $num02 = $somar';
     return this.resp;
   }
 
@@ -34,8 +34,8 @@ class HomeState extends State<Home> {
   dividir() {
     double num01 = double.parse(this.num01Controller.text); //te
     double num02 = double.parse(this.num02Controller.text);
-    double subtrair = num01 / num02;
-    this.resp = '$num01 / $num02 = ' + subtrair.toStringAsFixed(2);
+    double dividir = num01 / num02;
+    this.resp = '$num01 / $num02 = ' + dividir.toStringAsFixed(2);
     return this.resp;
   }
 
