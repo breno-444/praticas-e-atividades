@@ -2,125 +2,134 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(
       MaterialApp(
-        initialRoute: '/segunda',
-        routes: {
-          '/segunda': (context) => SegundaRota(),
-          '/': (context) => PrimeiraRota(),
-          
-        },
+        home: PrimeiraRota(),
       ),
     );
 
 // O objeto da classe mensagem será enviado para a segunda rota.
+class Preco {
+  double etanol;
+  double gasolina;
+  Preco(this.etanol, this.gasolina);
+  razao() => etanol / gasolina;
+}
 
 class PrimeiraRota extends StatefulWidget {
-  PrimeiraRotaState createState() {
-    return PrimeiraRotaState();
-  }
+  @override
+  State<PrimeiraRota> createState() => _PrimeiraRotaState();
 }
 
-class PrimeiraRotaState extends State<PrimeiraRota> {
-  var mensagem = ('');
+class _PrimeiraRotaState extends State<PrimeiraRota> {
+  final TextEditingController etanolController = TextEditingController();
+
+  final TextEditingController gasolinaController = TextEditingController();
+  String resp = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Primeira Rota'),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              '$mensagem',
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ElevatedButton(
-              child: Text('Ir para a Segunda Rota'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SegundaRota()),
-                ).then((resp) {
-                  setState(() {
-                    mensagem = resp;
-                  });
-                });
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SegundaRota extends StatelessWidget {
-  TextEditingController num01Controller = TextEditingController();
-  TextEditingController num02Controller = TextEditingController();
-  String resp = "";
-
-  get body => null;
-  somar() {
-    int num01 = int.parse(this.num01Controller.text);
-    int num02 = int.parse(this.num02Controller.text);
-    int soma = num01 + num02;
-    this.resp = '$num01 + $num02 = $soma';
-    return this.resp;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Segunda Rota"),
+        title: Text("Primeira Rota"),
       ),
       body: Column(
         children: [
           Container(
             margin: EdgeInsets.all(10),
             child: TextField(
-              controller: num01Controller,
+              controller: etanolController,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
-                  onPressed: () => num01Controller.clear(),
+                  onPressed: () => etanolController.clear(),
                   icon: Icon(Icons.clear),
                 ),
                 border: OutlineInputBorder(),
-                labelText: 'informe o primeiro número',
+                labelText: 'informe o valor do Etanol',
               ),
             ),
           ),
           Container(
             margin: EdgeInsets.all(10),
             child: TextField(
-              controller: num02Controller,
+              controller: gasolinaController,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
-                  onPressed: () => num02Controller.clear(),
+                  onPressed: () => gasolinaController.clear(),
                   icon: Icon(Icons.clear),
                 ),
                 border: OutlineInputBorder(),
-                labelText: 'informe o segundo número',
+                labelText: 'informe o valor da Gasolina',
               ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  print(somar());
-                  Navigator.pop(context, resp);
-                },
-                child: Text('Voltar para a Primeira Rota'),
-              ),
-            ],
+          ElevatedButton(
+            onPressed: () {
+              double etanol = double.parse(etanolController.text);
+              double gasolina = double.parse(gasolinaController.text);
+              Preco preco = Preco(etanol, gasolina);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SegundaRota(preco),
+                ),
+              ).then(
+                (resposta) => setState(() => resp = resposta),
+              );
+            },
+            child: Text('Ir para a Segunda Rota'),
+          ),
+          Text(
+            'abasteça com $resp',
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.green,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SegundaRota extends StatelessWidget {
+  final Preco preco;
+  SegundaRota(this.preco);
+  @override
+  Widget build(BuildContext context) {
+    String resp = 'gasolina';
+
+    if (preco.razao() < 0.7) {
+      resp = 'etanol';
+    }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Segunda Rota'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text(
+              '${preco.etanol.toStringAsFixed(2)} / ${preco.gasolina.toStringAsFixed(2)} = ${preco.razao().toStringAsFixed(2)}',
+              style: TextStyle(
+                fontSize: 40,
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'abasteça com $resp',
+              style: TextStyle(
+                fontSize: 25,
+                color: Colors.blue,
+              ),
+            ),
+            ElevatedButton(
+              child: Text('Ir para a Primeira Rota'),
+              onPressed: () {
+                Navigator.pop(context, resp);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
