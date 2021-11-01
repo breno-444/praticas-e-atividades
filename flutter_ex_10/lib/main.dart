@@ -129,14 +129,15 @@ class Descricao01 extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(5, 90, 5, 2)),
             Expanded(
               child: Container(
-                  child: Text(
-                    'O Metropolitan Museum of Art (em português: Museu Metropolitano de Arte), conhecido informalmente como The Met, é um museu de arte localizado na cidade de Nova Iorque, Estados Unidos, sendo um dos mais visitados museus do planeta. Fundado em 13 de abril de 1870, foi aberto ao público em 20 de fevereiro de 1872. É um dos maiores e mais importantes museus do mundo e abriga uma importante coleção de pintura europeia dos séculos XII-XX e obras da arte antiga (grega, romana, egípcia e assírio-babilónica) e oriental.(Wikipédia)',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                child: Text(
+                  'O Metropolitan Museum of Art (em português: Museu Metropolitano de Arte), conhecido informalmente como The Met, é um museu de arte localizado na cidade de Nova Iorque, Estados Unidos, sendo um dos mais visitados museus do planeta. Fundado em 13 de abril de 1870, foi aberto ao público em 20 de fevereiro de 1872. É um dos maiores e mais importantes museus do mundo e abriga uma importante coleção de pintura europeia dos séculos XII-XX e obras da arte antiga (grega, romana, egípcia e assírio-babilónica) e oriental.(Wikipédia)',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
-                  margin: EdgeInsets.fromLTRB(30, 100, 5, 80)),
+                ),
+                margin: EdgeInsets.fromLTRB(30, 100, 5, 80),
+              ),
             ),
           ],
         ),
