@@ -18,7 +18,7 @@ class HomeState extends State<Home> {
   somar() {
     int num01 = int.parse(this.num01Controller.text);
     int num02 = int.parse(this.num02Controller.text);
-    int soma = num01 + num02;
+    int somar = num01 + num02;
     this.resp = '$num01 + $num02 = $somar';
     return this.resp;
   }
