@@ -6,7 +6,6 @@ class MeuAplicativo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: PrimeiraRota(),
     );
   }
@@ -30,7 +29,9 @@ class PrimeiraRota extends StatelessWidget {
               accountEmail: Text("ana@ana.com.br"),
               currentAccountPicture: CircleAvatar(
                 radius: 30.0,
-                backgroundImage: AssetImage('img/coruja.jpg'),
+                backgroundImage: NetworkImage(
+                  'https://flutter.github.io/assets-for-apidocs/assets/widgets/owl.jpg',
+                ),
                 backgroundColor: Colors.transparent,
               ),
             ),
@@ -41,12 +42,6 @@ class PrimeiraRota extends StatelessWidget {
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
                 print('Ir para a Rota 02.');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RotaGenerica('Segunda Rota'),
-                  ),
-                );
               },
             ),
             ListTile(
@@ -56,12 +51,6 @@ class PrimeiraRota extends StatelessWidget {
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
                 print('Ir para a Rota 03.');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RotaGenerica('Terceira Rota'),
-                  ),
-                );
               },
             ),
             ListTile(
