@@ -269,7 +269,7 @@ class Descricao04 extends StatelessWidget {
             Expanded(
               child: Container(
                   child: Text(
-                    'Um uádi, uade, uédi[1] ou uede[2] (do árabe وادي‎; romaniz.: wádí, "águas mananciais, rio", plural de wád) é um leito seco de rio no qual as águas correm apenas na estação das chuvas. O termo é usado nas regiões desérticas da Norte da África e da Ásia e é muito comum em topônimos. Como exemplo, resta na toponímia de muitos rios do sul da Península Ibérica, como o Guadiana, o Guadalquivir, o Guadalete, o Guadalfeo ou o Guadarrama.(Wikipédia)',
+                    'Um uádi, é um leito seco de rio no qual as águas correm apenas na estação das chuvas. O termo é usado nas regiões desérticas da Norte da África e da Ásia e é muito comum em topônimos. Como exemplo, resta na toponímia de muitos rios do sul da Península Ibérica, como o Guadiana, o Guadalquivir, o Guadalete, o Guadalfeo ou o Guadarrama.(Wikipédia)',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
